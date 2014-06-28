@@ -92,68 +92,6 @@ javascript:(function() {
 			   }
 			},
 			
-            'optimalWin': {
-                label: 'All Hacks',
-                action: function(){
-                    toggleAutoAction('optimalWin', function(){
-                    
-                        /*UPGRADES FOR FREE */
-                        Game.UpgradesById.forEach(function (e) { e.basePrice = 0; }); Game.upgradesToRebuild = 1;
-
-                        /* auto-click big cookie and spawn/auto-click golden cookie */
-                        Game.ClickCookie();
-                        Game.goldenCookie.spawn();
-                        Game.goldenCookie.click();
-
-                        /* vars */
-                        var cursorProduct = Game.Objects.Cursor;
-                        var timeMachine = Game.ObjectsById[Game.ObjectsById.length-1];
-                        var cursUpgrade;
-
-                        /* buy 10 cursors */
-                        if (cursorProduct.amount < 10){
-                            cursorProduct.buy();
-                            return;
-                        }
-
-                        /* buy a bunch of cursor upgrades */
-                        cursUpgrade = Game.UpgradesById[0];
-                        if (!cursUpgrade.bought && cursUpgrade.unlocked){
-                            cursUpgrade.buy();
-                            return;
-                        }
-                        cursUpgrade = Game.UpgradesById[1];
-                        if (!cursUpgrade.bought && cursUpgrade.unlocked){
-                            cursUpgrade.buy();
-                            return;
-                        }
-                        cursUpgrade = Game.UpgradesById[2];
-                        if (!cursUpgrade.bought && cursUpgrade.unlocked){
-                            cursUpgrade.buy();
-                            return;
-                        }
-                        cursUpgrade = Game.UpgradesById[75];
-                        if (!cursUpgrade.bought && cursUpgrade.unlocked){
-                            cursUpgrade.buy();
-                            return;
-                        }
-                        cursUpgrade = Game.UpgradesById[76];
-                        if (!cursUpgrade.bought && cursUpgrade.unlocked){
-                            cursUpgrade.buy();
-                            return;
-                        }
-
-                        /* buy upgrades if they are available in store and < 1/4 time machine price */
-                        if (Game.UpgradesInStore.length > 0 && Game.UpgradesInStore[0].basePrice < timeMachine.price / 4){
-                            Game.UpgradesInStore[0].buy();
-                        }
-
-                        /* prioritize time machines over everything */
-                        timeMachine.buy();
-
-                    })
-                }
-            },
         }
     };
 
