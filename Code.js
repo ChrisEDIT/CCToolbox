@@ -76,14 +76,7 @@ javascript:(function() {
                     })
                 }
             },
-            'showGoldenCookieDelay': {
-                label: 'Show golden cookie delay in title',
-                action: function(){
-                    toggleAutoAction('showGoldenCookieDelay', function(){
-                        document.title='(' + Math.floor(Game.goldenCookie.delay / Game.fps) + ' s) '+Beautify(Game.cookies)+' '+(Game.cookies==1?'cookie':'cookies');
-                    })
-                }
-            },
+           
 			
 			'InfinityCookies' : {
 			label: 'Give Infinity Cookies',
