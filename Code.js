@@ -79,13 +79,33 @@ javascript:(function() {
            
 			
 			'InfinityCookies' : {
-			label: 'Give Infinity Cookies',
+			label: 'Give Infinity Cookies', 
 			action: function() {
                  Game.cookies = 2000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000;
 			   }
 			},
+	
+	          'UnlockallAv' : {
+	          	label: 'Unlock all Achievements',
+	                action: function() {
+	                	javascript: (function() { for (var ACV = 0; ACV < Game.AchievementsN; ACV++) { Game.Win(Game.AchievementsById[ACV].name); } })();
+	                }
+	          },
+		
+		'WipeAv' : {
+	          	label: 'Wipe all Achievements', 
+	                action: function() {
+	                	for (var i in Game.AchievementsById) { var me = Game.AchievementsById[i]; me.won = 0; }
+
+	                }
+	          }
+	          
+	          
 			
         }
+        
+                    
+        
     };
 
 	
@@ -143,7 +163,7 @@ javascript:(function() {
             styles.className += ' ' + stylesClassName;
             document.body.appendChild(styles);
         }
-        var css = '#'+options.panelId+'{border:5px;position:fixed;top:0;right:0;background:#42ADE7;color:FF3C3C;padding:6px;z-index:9999;}#'+options.panelId+' button{margin-left: 5px;}#'+options.panelId+' button.active:after{content:"*";color:red;}';
+        var css = '#'+options.panelId+'{border:5px;position:fixed;top:0;right:0;background:#2E2EFE;color:#FF3C3C;padding:6px;z-index:9999;}#'+options.panelId+' button{margin-left: 5px;}#'+options.panelId+' button.active:after{content:"*";color:red;}';
         styles[(typeof document.body.style.WebkitAppearance=="string")?"innerText":"innerHTML"] = css;
     }
                     
